@@ -1,0 +1,4 @@
+* Mejora en el diseño e interfaz de usuario
+* Nuevo proceso de verificación de la copia de seguridad
+* Arranque más rápido
+* Toneladas de correcciones

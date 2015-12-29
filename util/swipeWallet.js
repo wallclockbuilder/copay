@@ -2,17 +2,19 @@
 
 'use strict';
 
+console.log('Swipe wallet is outdated, and it does not work with Copay 0.10.x');
+process.exit(1);
 
-var copay = require('../copay');
 var _ = require('lodash');
+var program = require('commander');
 var config = require('../config');
 var version = require('../version').version;
 var sinon = require('sinon');
 var bitcore = require('bitcore');
 var readline = require('readline');
 var async = require('async');
-var program = require('commander');
 
+var copay = require('../copay');
 function list(val) {
   return val.split(',');
 }
@@ -162,7 +164,7 @@ firstWallet.updateIndexes(function() {
 
       amount = amount || balance - fee * bitcore.util.COIN;
 
-      firstWallet.createTx(destAddr, amount, '', {}, function(err, ntxid) {
+      firstWallet.spend({ toAddress: destAddr, amountSat: amount }, function(err, ntxid) {
         if (err || !ntxid) {
           if (err && err.toString().match('BIG')) {
             throw new Error('Could not create tx' + err);
@@ -204,13 +206,13 @@ firstWallet.updateIndexes(function() {
             if (err)
               throw new Error(err);
 
-            var p = firstWallet.txProposals.getTxProposal(ntxid);
+            var p = firstWallet.txProposals.get(ntxid);
             if (p.builder.isFullySigned()) {
               console.log('\t FULLY SIGNED. BROADCASTING NOW....');
               var tx = p.builder.build();
               var txHex = tx.serialize().toString('hex');
               //console.log('\t RAW TX: ', txHex);
-              firstWallet.sendTx(ntxid, function(txid) {
+              firstWallet.broadcastToBitcoinNetwork(ntxid, function(txid) {
                 console.log('\t #######  SENT  TXID:', txid);
                 process.exit(1);
               });

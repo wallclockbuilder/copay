@@ -3,30 +3,26 @@
   "keywords": [
     "copay",
     "wallet",
-    "multisignature"
+    "multisignature",
+    "bitcore"
   ],
   "dependencies": {
-    "angular": "~1.3.0",
-    "angular-foundation": "*",
-    "angular-route": "~1.3.0",
-    "angular-qrcode": "~3.1.0",
-    "angular-mocks": "~1.3.0",
-    "angular-gettext": "~1.1.0",
-    "mocha": "~1.18.2",
-    "chai": "~1.9.1",
-    "sjcl": "1.0.0",
-    "file-saver": "*",
+    "angular": "1.4.6",
+    "angular-bitcore-wallet-client": "1.1.7",
+    "angular-foundation": "0.7.0",
+    "angular-gettext": "2.1.2",
+    "angular-moment": "0.10.1",
+    "angular-qrcode": "monospaced/angular-qrcode#~6.0.3",
+    "angular-ui-router": "0.2.15",
+    "angular-ui-switch": "0.1.1",
+    "animate.css": "3.4.0",
+    "fastclick": "1.0.6",
+    "foundation": "5.5.2",
+    "foundation-icon-fonts": "*",
+    "moment": "2.10.3",
+    "ng-lodash": "0.2.3",
     "qrcode-decoder-js": "*",
-    "angular-moment": "~0.7.1",
-    "socket.io-client": ">=1.0.0",
-    "ng-idle": "*",
-    "inherits": "~0.0.1",
-    "angular-load": "0.2.0",
-    "lodash": "~2.4.1",
-    "angular-gravatar": "*",
-    "angular-touch": "~1.3.0"
-  },
-  "resolutions": {
-    "angular": "~1.3.0"
+    "trezor-connect": "~1.0.1"
   }
 }
+
